@@ -1,8 +1,6 @@
 target/
 .idea/
 *.iml
-.mvn/wrapper/maven-wrapper.jar
-.mvn/wrapper/maven-wrapper.properties
 .git/
 .gitignore
 .gitattributes
@@ -12,4 +10,3 @@ uploads/
 *.log
 .DS_Store
 .vscode/
-*.md
