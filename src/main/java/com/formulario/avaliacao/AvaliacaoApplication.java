@@ -7,6 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AvaliacaoApplication {
 
 	public static void main(String[] args) {
+		String port = System.getenv("PORT");
+		if (port != null) {
+			System.setProperty("server.port", port);
+		}
 		SpringApplication.run(AvaliacaoApplication.class, args);
 	}
 
