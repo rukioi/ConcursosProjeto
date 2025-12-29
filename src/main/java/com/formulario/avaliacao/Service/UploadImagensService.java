@@ -41,6 +41,9 @@ public class UploadImagensService {
         }
 
         Path diretorio = Paths.get(uploadPath);
+        if (!diretorio.isAbsolute()) {
+            diretorio = diretorio.toAbsolutePath();
+        }
         if (!Files.exists(diretorio)) {
             Files.createDirectories(diretorio);
         }
@@ -65,7 +68,11 @@ public class UploadImagensService {
             return;
         }
 
-        Path caminhoCompleto = Paths.get(uploadPath).resolve(nomeArquivo);
+        Path diretorio = Paths.get(uploadPath);
+        if (!diretorio.isAbsolute()) {
+            diretorio = diretorio.toAbsolutePath();
+        }
+        Path caminhoCompleto = diretorio.resolve(nomeArquivo);
         Files.deleteIfExists(caminhoCompleto);
     }
 
