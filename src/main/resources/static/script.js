@@ -22,6 +22,14 @@ document.getElementById("addConcurso").addEventListener("click", () => {
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerText;
+    
+    submitButton.disabled = true;
+    submitButton.innerText = "Salvando...";
+    mensagem.innerText = "";
+    mensagem.style.display = "none";
+
     const concursos = [];
     document.querySelectorAll(".concurso").forEach(div => {
         const inputs = div.querySelectorAll("input");
@@ -56,13 +64,18 @@ form.addEventListener("submit", async (e) => {
             throw new Error(erro.message || "Erro ao salvar");
         }
 
+        mensagem.style.display = "block";
         mensagem.style.color = "green";
         mensagem.innerText = "Cadastro realizado com sucesso!";
         form.reset();
         concursosDiv.innerHTML = "";
 
     } catch (err) {
+        mensagem.style.display = "block";
         mensagem.style.color = "red";
         mensagem.innerText = err.message;
+    } finally {
+        submitButton.disabled = false;
+        submitButton.innerText = originalButtonText;
     }
 });

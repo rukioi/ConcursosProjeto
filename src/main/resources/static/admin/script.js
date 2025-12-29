@@ -5,7 +5,7 @@ async function carregarCadastros() {
     try {
         let apiUrl = '/paginas';
         
-        if (window.location.port === '63342' || window.location.port === '') {
+        if (window.location.hostname === 'localhost' && (window.location.port === '63342' || window.location.port === '')) {
             apiUrl = 'http://localhost:8081/paginas';
         }
         
